@@ -9,7 +9,7 @@
                 <div class="card-header">
                     <h3>Products</h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body" id="products_table">
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -38,13 +38,10 @@
                                                     <?=$item['status'] == '0'? "Visible":"Hidden" ?>
                                                 </td>
                                                 <td>
-                                                    <div class="btn-group" role="group">
-                                                        <a href="edit_product.php?id=<?= $item['id'];?>" class="btn btn-sm btn-primary">Edit</a>
-                                                        <form action="code.php" method="POST">
-                                                            <input type="hidden" name="product_id" value="<?= $item['id'];?>">
-                                                            <button type="submit" class="btn btn-sm btn-danger" name="delete_product_btn">Delete</button>
-                                                        </form>
-                                                    </div>
+                                                    <a href="edit_product.php?id=<?= $item['id'];?>" class="btn btn-sm btn-primary">Edit</a>
+                                                
+                                                    <button type="button" class="btn btn-sm btn-danger delete_product_btn" value=<?= $item['id'];?>>Delete</button>
+                                                   
                                                 </td>
                                             </tr>
                                         <?php

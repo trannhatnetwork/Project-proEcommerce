@@ -1,12 +1,11 @@
-<?php
-  session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
+  <?php
+    session_start();
+  ?>
   <title>
     PHP Ecommerce
   </title>
@@ -31,10 +30,6 @@
     .form-select{
       border: 1px solid #b3a1a1 !important;
       padding: 8px 10px;
-    }
-    .btn-group a,
-    .btn-group form {
-      margin-left: 5px; /* Khoảng cách giữa các nút */
     }
 
   </style>

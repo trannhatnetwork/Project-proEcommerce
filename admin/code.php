@@ -27,9 +27,9 @@
 
         if($cate_query_run){
             move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$filename);
-            redirect("index.php", "Category Added Successfully");
+            redirect("category.php", "Category Added Successfully");
         }else{
-            redirect("index.php", "Something Went Wrong");
+            redirect("category.php", "Something Went Wrong");
         }
 
     } else if(isset($_POST['update_category_btn'])){
@@ -89,9 +89,11 @@
             if(file_exists("../uploads/".$image)){
                 unlink("../uploads/".$image);
             }
-            redirect("category.php?id=$category_id", "Category Deleted Successfully!");
+            // redirect("category.php?id=$category_id", "Category Deleted Successfully!");
+            echo 200;
         }else{
-            redirect("category.php", "Something Went Wrong");
+            // redirect("category.php", "Something Went Wrong");
+            echo 500;
         }
     } else if(isset($_POST['add_product_btn'])){
         $category_id = $_POST['category_id'];
@@ -175,6 +177,27 @@
             redirect("products.php", "Product Updated Successfully");
         }else{
             redirect("products.php", "Something Went Wrong");
+        }
+    } else if(isset($_POST['delete_product_btn'])){
+        $product_id = mysqli_real_escape_string($con, $_POST['product_id']);
+
+        $product_query = "SELECT * FROM tbl_product WHERE id = '$product_id'";
+        $product_query_run = mysqli_query($con, $product_query);
+        $product_data = mysqli_fetch_array($product_query_run);
+        $image = $product_data['image'];
+
+        $delete_query = "DELETE FROM tbl_product WHERE id = '$product_id'";
+        $delete_query_run = mysqli_query($con, $delete_query);
+
+        if($delete_query_run){
+            if(file_exists("../uploads/".$image)){
+                unlink("../uploads/".$image);
+            }
+            // redirect("products.php?", "product Deleted Successfully!");
+            echo 200;
+        }else{
+            // redirect("products.php", "Something Went Wrong");
+            echo 500;
         }
     } else{
         header("Location: ../index.php");
