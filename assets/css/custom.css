@@ -1,5 +1,11 @@
 *{
-    font-family: 'Playfair Display', serif;
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif; */
     font-family: 'Roboto', sans-serif;
 }
+a{
+    text-decoration: none;
+}
+/* .text-black{
+    text-decoration: none;
+} */
