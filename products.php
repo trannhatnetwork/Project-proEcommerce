@@ -17,7 +17,7 @@
                 <div class="container">
                     <h6 class="text-white">
                         <a class="text-white" href="index.php">Home /</a>
-                        <a class="text-white" href="categogies.php">Collections / </a>
+                        <a class="text-white" href="categories.php">Collections / </a>
                         <?= $category['name'];?> 
                     </h6>
                 </div>
@@ -35,11 +35,11 @@
                                         foreach($products as $item){
                                             ?>
                                                 <div class="col-md-3 mb-2">
-                                                    <a href="#">
+                                                    <a href="product-view.php?product=<?= $item['slug']?>">
                                                         <div class="card shadow">
                                                             <div class="card-body">
                                                                 <img src="uploads/<?= $item['image']?>" height="260px" alt="Product Image" class="w-100">
-                                                                <a href=""><h4 class="text-center"><?= $item['name'];?></h4>
+                                                                <h4 class="text-center"><?= $item['name'];?></h4>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -60,7 +60,11 @@
         
 
             <?php 
+        }else{
+            echo "Something Went Wrong";
         }
+    }else{
+        echo "Something Went Wrong";
     }
 include 'inc/footer.php';
 ?>
