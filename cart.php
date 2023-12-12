@@ -63,8 +63,10 @@
                                     </div>
                                 <?php
                             }
-                            
                         ?>
+                    </div>
+                    <div class="float-end">
+                        <a href="checkout.php" class="btn btn-outline-primary">Proceed to Checkout</a>
                     </div>
                 </div>
             </div>
