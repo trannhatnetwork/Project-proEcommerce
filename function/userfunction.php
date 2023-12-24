@@ -1,6 +1,10 @@
 <?php
     
-    include('config/dbcon.php');
+    // $filepath = realpath(dirname(__FILE__));
+    // include_once ($filepath.'/../lib/database.php');
+    // include_once ($filepath.'/../helpers/format.php');
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../config/dbcon.php');
 
     function getAllActive($table){
         global $con;

@@ -82,7 +82,7 @@ $(document).ready(function () {
       success: function (response) {
         if (response == 202) {
           alertify.success("Delete Item Successfully");
-          $("#mycart").load(location.href + "#mycart");
+          // $("#mycart").load(location.href + "#mycart");
         } else {
           alertify.success("Something went wrong");
         }
