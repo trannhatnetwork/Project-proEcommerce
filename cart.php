@@ -15,7 +15,7 @@
 </div>
 <div class="py-5">
     <div class="container">
-        <div class="card card-body shadow">
+        <div class="">
             <div class="row">
                 <div class="col-md-12">
                     <div id="mycart">

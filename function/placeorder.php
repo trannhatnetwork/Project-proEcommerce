@@ -46,6 +46,19 @@
                     $insert_item_query = "INSERT INTO tbl_order_item (order_id, prod_id, qty, price ) 
                         VALUES ('$order_id', '$prod_id', '$prod_qty', '$price')";
                     $insert_items_query_run = mysqli_query($con, $insert_item_query);
+
+                    //cap nhat lai so luong san pham 
+                    $product_query = "SELECT * FROM tbl_product WHERE id = '$prod_id' LIMIT 1";
+                    $product_query_run = mysqli_query($con, $product_query);
+
+                    $productData = mysqli_fetch_array($product_query_run);
+                    $current_qty = $productData['qty'];
+
+                    $new_qty = $current_qty - $prod_qty; //cap nhan lai so luong san pham con ton tai trong kho
+
+                    $updateQty_query = "UPDATE tbl_product SET qty = '$new_qty' WHERE id = '$prod_id'";
+                    $updateQty_query_run = mysqli_query($con, $updateQty_query);
+
                 }
 
                 $deleteCartQuery = "DELETE FROM tbl_cart WHERE user_id = '$userId'";
