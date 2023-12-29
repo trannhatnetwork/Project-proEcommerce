@@ -41,7 +41,7 @@
                                                 <td><?= $item['total_price']?></td>
                                                 <td><?= $item['created_at']?></td>
                                                 <td>
-                                                    <a href="#" class='btn btn-primary'>View Details</a>
+                                                    <a href="view-order.php?t=<?= $item['tracking_no']?>" class='btn btn-primary'>View Details</a>
                                                 </td>
                                             </tr>
                                         <?php

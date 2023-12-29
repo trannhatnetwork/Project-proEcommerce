@@ -29,7 +29,8 @@
             foreach ($query_run as $citem ){
                 $totalPrice += $citem['selling_price'] * $citem['prod_qty'];
             }
-            $tracking_no = "sharmacoder".rand(1111, 9999).substr($phone, 2);
+            // $tracking_no = $_SESSION['auth_user']['user_name'].rand(1111, 9999).substr($phone, 2);
+            $tracking_no = "phpEcommer".rand(1111, 9999).substr($phone, 2);
             $user_id = $_SESSION['auth_user']['user_id'];
 
             $insert_query = "INSERT INTO tbl_order (tracking_no, user_id, name, email, phone, address, pincode, total_price, payment_mode)
