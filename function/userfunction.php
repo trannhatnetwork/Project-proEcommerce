@@ -12,6 +12,12 @@
         return $query_run = mysqli_query($con, $query);
     }
 
+    function getAllTrending(){
+        global $con;
+        $query = "SELECT * FROM tbl_product WHERE trending='1'";
+        return $query_run = mysqli_query($con, $query);
+    }
+
     function getSlugActive($table, $slug){
         global $con;
         $query = "SELECT * FROM $table WHERE slug='$slug' AND status='0' LIMIT 1";
