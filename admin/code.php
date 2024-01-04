@@ -206,7 +206,7 @@
         $updateOrder_query = "UPDATE tbl_order SET status='$order_status' WHERE tracking_no='$track_no'";
         $updateOrder_query_run = mysqli_query($con, $updateOrder_query);
 
-        redirect("view_order.php", "Order Status Updated Successfully");
+        redirect("view_order.php?t=$track_no", "Order Status Updated Successfully");
     } else{
         header("Location: index.php");
     }

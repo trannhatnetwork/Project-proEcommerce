@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3>Order History
-                        <a href="orders.php" class="btn btn-warning float-end">Back</a>
+                        <a href="orders.php" class="btn btn-warning float-end"><i class="fa fa-reply"></i> Back</a>
                     </h3>
                 </div>
                 <div class="card-body" id="orders_table">

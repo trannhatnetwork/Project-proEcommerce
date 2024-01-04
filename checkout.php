@@ -79,6 +79,7 @@
                             <div class="">
                                 <input type="hidden" name="payment_mode" value="COD">
                                 <button type="submit" name="placeOrderBtn" class="btn btn-primary w-100">Confirm and place order | COD</button>
+                                <div id="paypal-button-container" class="mt-2"></div>
                             </div>
                         </div>
                     </div>
@@ -90,4 +91,27 @@
     
 
 <?php include 'inc/footer.php';?>
-    
+ <!-- Replace the "test" client-id value with your client-id -->
+ <script src="https://www.paypal.com/sdk/js?client-id=AVXxjNYwmDscmCtlu1cYEOKoxIS_Y6JeSfnPEitF7q8EM3ZCM9E3acmFRVBvNGbNFedHXdyiV-I2aHNZ&currency=USD"></script>
+
+<script>
+    paypal.Buttons({
+        createOrder: (data, actions) =>{
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '<?= $totalPrice?>'
+                    }
+                }]
+            });
+        },
+        onApprove: (data, actions) => {
+            return actions.order.capture().then(function(orderData) {
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                const transaction = orderData.purchase_units[0].payments.captures[0];
+                alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for All availabel detail`);
+            });
+        }
+    }).render('#paypal-button-container');
+</script>
+ 
