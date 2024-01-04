@@ -26,23 +26,28 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="fw-bold">Name</label>
-                                    <input type="text" name="name" placeholder="Enter your full name" class="form-control" required>
+                                    <input type="text" name="name" id="name" placeholder="Enter your full name" class="form-control" required>
+                                    <small class="text-danger name"></small>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="fw-bold">Email</label>
-                                    <input type="email" name="email" placeholder="Enter your email address" class="form-control" required>
+                                    <input type="email" name="email" id="email" placeholder="Enter your email address" class="form-control" required>
+                                    <small class="text-danger email"></small>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="fw-bold">Phone</label>
-                                    <input type="text" name="phone" placeholder="Enter your phone number" class="form-control" required>
+                                    <input type="text" name="phone" id="phone" placeholder="Enter your phone number" class="form-control" required>
+                                    <small class="text-danger phone"></small>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="fw-bold">Pin Code</label>
-                                    <input type="text" name="pincode" placeholder="Enter your pin code" class="form-control" required>
+                                    <input type="text" name="pincode" id="pincode" placeholder="Enter your pin code" class="form-control" required>
+                                    <small class="text-danger pincode"></small>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label class="fw-bold">Address</label>
-                                    <textarea name="address" class="form-control " rows="5" required></textarea>
+                                    <textarea name="address" id="address" class="form-control " rows="5" required></textarea>
+                                    <small class="text-danger address"></small>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +100,36 @@
  <script src="https://www.paypal.com/sdk/js?client-id=AVXxjNYwmDscmCtlu1cYEOKoxIS_Y6JeSfnPEitF7q8EM3ZCM9E3acmFRVBvNGbNFedHXdyiV-I2aHNZ&currency=USD"></script>
 
 <script>
+
+    var name = $('#name').val();
+    var email = $('#email').val();
+    var phone = $('#phone').val();
+    var pincode = $('#pincode').val();
+    var address = $('#address').val();
+
     paypal.Buttons({
+        onclick(){
+            if(name.length == 0){
+                $('.name').text("This field is required");
+                return false;
+            }
+            if(email.length == 0){
+                $('.email').text("This field is required");
+                return false;
+            }
+            if(phone.length == 0){
+                $('.phone').text("This field is required");
+                return false;
+            }
+            if(pincode.length == 0){
+                $('.pincode').text("This field is required");
+                return false;
+            }
+            if(address.length == 0){
+                $('.address').text("This field is required");
+                return false;
+            }
+        }
         createOrder: (data, actions) =>{
             return actions.order.create({
                 purchase_units: [{
@@ -109,7 +143,7 @@
             return actions.order.capture().then(function(orderData) {
                 console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                 const transaction = orderData.purchase_units[0].payments.captures[0];
-                alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for All availabel detail`);
+                alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for All availabel details`);
             });
         }
     }).render('#paypal-button-container');
