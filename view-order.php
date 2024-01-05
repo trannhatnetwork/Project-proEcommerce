@@ -125,12 +125,10 @@
                                     <hr>
                                     <label class="fw-bold">Payment Mode</label>
                                     <div class="border p-1 mb-3">
-                                        <label for="">Payment Mode</label>
                                         <?= $data['payment_mode']?>
                                     </div>
                                     <label class="fw-bold">Status</label>
                                     <div class="border p-1 mb-3">
-                                        <label for="">Status</label>
                                         <?php
                                             if($data['status'] == 0){
                                                 echo "Under Process";

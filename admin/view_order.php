@@ -1,7 +1,6 @@
 <?php
     include 'includes/header.php';
     include '../middleware/adminMiddleware.php';
-    
 
     if(isset($_GET['t'])){
         $tracking_no = $_GET['t'];
@@ -113,14 +112,13 @@
                             <hr>
                             <label class="fw-bold">Payment Mode</label>
                             <div class="border p-1 mb-3">
-                                <label for="">Payment Mode</label>
                                 <?= $data['payment_mode']?>
                             </div>
                             <label class="fw-bold">Status</label>
                             <div class="mb-3">
-                                <form action="code.php" mothod="POST">
+                                <form action="code.php" method="POST">
                                     <input type="hidden" name="tracking_no" value="<?= $data['tracking_no']?>">
-                                    <select name="order_status" id="" class="form-select">
+                                    <select name="order_status" class="form-select">
                                         <option value="0" <?= $data['status'] == 0?"selected":""?>>Under Process</option>
                                         <option value="1" <?= $data['status'] == 1?"selected":""?>>Completed</option>
                                         <option value="2" <?= $data['status'] == 2?"selected":""?>>Cancelled</option>

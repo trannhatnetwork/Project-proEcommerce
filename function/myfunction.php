@@ -22,7 +22,7 @@
     }
     function getAllOrders(){
         global $con;
-        $query = "SELECT * FROM tbl_order WHERE status = '0'";
+        $query = "SELECT * FROM tbl_order WHERE status = '0' ORDER BY id DESC";
         return $query_run = mysqli_query($con, $query);
     }
     function getOrderHistory(){
